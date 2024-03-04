@@ -137,7 +137,7 @@ class Solver():
         self.net.train()
         loss_recoder = AvgMeter()
         dataset = DataSet(self.args.img_path, self.args.img_txt_train, self.train_transform)
-        dataloader = DataLoader(dataset, batch_size=self.args.batch_size, shuffle=True, num_workers=8)
+        dataloader = DataLoader(dataset, batch_size=self.args.batch_size, shuffle=True, num_workers=1)
 
         optimizer = torch.optim.SGD(self.net.parameters(), lr=self.args.lr, momentum=0.9, weight_decay=self.args.wd)
         if self.args.method == 'baseline':
@@ -223,7 +223,7 @@ class Solver():
     def test(self, epochs=99):
 
         dataset = DataSet(self.args.img_path, self.args.img_txt_test, self.test_transform)
-        dataloader = DataLoader(dataset, batch_size=32, shuffle=False, num_workers=8)
+        dataloader = DataLoader(dataset, batch_size=32, shuffle=False, num_workers=1)
 
         criterion = nn.CrossEntropyLoss().cuda()
         # test the top-1 acc and top-5 acc
