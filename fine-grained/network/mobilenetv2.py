@@ -2,7 +2,7 @@ import torch.nn as nn
 import math
 import torch.utils.model_zoo as model_zoo
 from torch import nn
-from torchvision.models.utils import load_state_dict_from_url
+from torch.hub import load_state_dict_from_url
 
 
 __all__ = ['MobileNetV2', 'mobilenet_v2']
